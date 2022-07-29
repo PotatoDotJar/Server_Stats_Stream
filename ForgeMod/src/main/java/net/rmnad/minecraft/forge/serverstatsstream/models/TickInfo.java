@@ -7,12 +7,9 @@ public class TickInfo {
     private double meanTickTime;
     private double meanTps;
 
-    private List<DimensionTickInfo> dimensionTickInfo;
-
-    public TickInfo(double meanTickTime, double meanTps, List<DimensionTickInfo> dimensionTickInfo) {
+    public TickInfo(double meanTickTime, double meanTps) {
         this.meanTickTime = meanTickTime;
         this.meanTps = meanTps;
-        this.dimensionTickInfo = dimensionTickInfo;
     }
 
     public double getMeanTickTime() {
@@ -31,13 +28,6 @@ public class TickInfo {
         this.meanTps = meanTps;
     }
 
-    public List<DimensionTickInfo> getDimensionTickInfo() {
-        return dimensionTickInfo;
-    }
-
-    public void setDimensionTickInfo(List<DimensionTickInfo> dimensionTickInfo) {
-        this.dimensionTickInfo = dimensionTickInfo;
-    }
 
     @Override
     public String toString() {
