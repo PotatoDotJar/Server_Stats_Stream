@@ -1,30 +1,30 @@
 package net.rmnad.minecraft.forge.serverstatsstream.models;
 
-import com.influxdb.annotations.Column;
-import com.influxdb.annotations.Measurement;
+//import com.influxdb.annotations.Column;
+//import com.influxdb.annotations.Measurement;
 
 import java.time.Instant;
 
-@Measurement(name = "server_report")
+//@Measurement(name = "server_report")
 public class ServerReport {
 
-    @Column(tag = true)
+    //@Column(tag = true)
     private String server_name;
 
-    @Column
+    //@Column
     private double mean_mspt;
 
-    @Column
+    //@Column
     private double mean_tps;
 
-    @Column
+    //@Column
     private int players_online;
 
-    @Column
+    //@Column
     private int total_player_slots;
 
-    @Column(timestamp = true)
-    Instant time;
+    //@Column(timestamp = true)
+    //Instant time;
 
     public String getServerName() {
         return server_name;
@@ -66,13 +66,13 @@ public class ServerReport {
         this.total_player_slots = total_player_slots;
     }
 
-    public Instant getTime() {
-        return time;
-    }
-
-    public void setTime(Instant time) {
-        this.time = time;
-    }
+//    public Instant getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(Instant time) {
+//        this.time = time;
+//    }
 
     @Override
     public String toString() {
@@ -82,7 +82,7 @@ public class ServerReport {
                 ", mean_tps=" + mean_tps +
                 ", players_online=" + players_online +
                 ", total_player_slots=" + total_player_slots +
-                ", time=" + time +
+                //", time=" + time +
                 '}';
     }
 }

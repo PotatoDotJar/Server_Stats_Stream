@@ -1,10 +1,10 @@
 package net.rmnad.minecraft.forge.serverstatsstream.services;
 
-import com.influxdb.client.InfluxDBClient;
-import com.influxdb.client.InfluxDBClientFactory;
-import com.influxdb.client.WriteApiBlocking;
-import com.influxdb.client.domain.WritePrecision;
-import com.influxdb.client.write.Point;
+//import com.influxdb.client.InfluxDBClient;
+//import com.influxdb.client.InfluxDBClientFactory;
+//import com.influxdb.client.WriteApiBlocking;
+//import com.influxdb.client.domain.WritePrecision;
+//import com.influxdb.client.write.Point;
 import net.minecraft.core.Registry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -23,32 +23,29 @@ public class ReportingThread extends Thread {
 
     private final MinecraftServer server;
 
-    private InfluxDBClient influxClient;
+    //private InfluxDBClient influxClient;
 
-    String token = "";
-    String bucket = "java-testing";
-    String org = "my-org";
+    //String token = "";
+    //String bucket = "java-testing";
+    //String org = "my-org";
 
     public ReportingThread(MinecraftServer server) {
         this.server = server;
 
-        influxClient = InfluxDBClientFactory.create("http://influxdb.pluto:8086", token.toCharArray());
+        //influxClient = InfluxDBClientFactory.create("http://influxdb.pluto:8086", token.toCharArray());
         ServerStatsStream.LOGGER.info("Connected to Influx DB Server");
     }
 
     public void serverStopping() throws InterruptedException {
 
         ServerStatsStream.LOGGER.info("Shutting down reporting thread");
-        influxClient.close();
-        influxClient = null;
+        //influxClient.close();
+        //influxClient = null;
         this.join();
     }
 
     @Override
     public void run() {
-
-
-
         while(server.isRunning()) {
             ServerReport report = GetReport(server);
             SendReport(report);
@@ -61,10 +58,12 @@ public class ReportingThread extends Thread {
 
     public void SendReport(ServerReport report) {
         // Write point for report
-        report.setTime(Instant.now());
+        //report.setTime(Instant.now());
 
-        WriteApiBlocking writeApi = influxClient.getWriteApiBlocking();
-        writeApi.writeMeasurement(WritePrecision.MS, report);
+        ServerStatsStream.LOGGER.info("TPS={}, MSPT={}", report.getMeanTps(), report.getMeanMspt());
+
+        //WriteApiBlocking writeApi = influxClient.getWriteApiBlocking();
+        //writeApi.writeMeasurement(WritePrecision.MS, report);
     }
 
     private ServerReport GetReport(MinecraftServer server) {

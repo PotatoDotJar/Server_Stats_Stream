@@ -2,6 +2,7 @@ package net.rmnad.minecraft.forge.serverstatsstream;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +22,11 @@ public class ServerStatsStream
         // Load config
         Config.register(ModLoadingContext.get());
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void registerCommands(RegisterCommandsEvent event) {
+        //new SSSCommands(event.getDispatcher());
     }
 
     @SubscribeEvent

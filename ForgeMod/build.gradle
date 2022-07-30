@@ -79,7 +79,7 @@ dependencies {
     //shadow "org.postgresql:postgresql:42.2.23.jre7"
     //shadow "net.rmnad.minecraft.forge:whitelistsynclib:${whitelistsynclib_version}"
 
-    shadow 'com.influxdb:influxdb-client-java:6.1.0'
+    //shadow 'com.influxdb:influxdb-client-java:6.1.0'
 }
 
 // START: SHADING DEPENDENCIES
